@@ -1,0 +1,130 @@
+# Script research
+
+I had a rummage through script files available from various sources. I was curious about what they all did. I'm leaving my notes here for the fun of it.
+
+## script descriptions for CT's Tribes2 distribution
+dso cleaner - deletes DSO files
+dtsview - improved the -show command by adding dtsview();
+uberguy variant of freelook
+halidekillsound - same as spinfusor.ch
+jumpjetpilot - You can have a single key got Jump Jetting and adjust mouse sensitivity when piloting.
+smallmouserange - something that makes the mouse range smaller
+t1voice - t1 voices, duh
+tournamentnetclient - seemingly a tribesnext tournament client, has some browser prototype stuff? didn't read it all that hard
+uberfov, uberzoom
+unreal tournament sound packs
+some huds, includuing the same fps and ping huds as spinfusor.ch. has a speed hud tho so that's nice
+
+
+
+## script descriptions for that other site with all the scripts
+empsniperstatus - energy sound meter, probably annoying?
+'encrypt'.vl2 - smoo^ followed by position dependent string replacement logic. neat, but the static keyspace makes it kinda silly
+esnvol - ingame volume settings hud
+engineerhud - tactical assets and repair state, way better written than teamassetfinder by the looks
+
+
+
+## script descriptions for spinfusor.ch
+AutoOutput is a demo clipper script - give it some times, it'll give you thousands of screenshots
+autoflag - say help 3s after picking up the flag, auto cannedchat
+autoflare - sometimes regarded as a cheat
+beaconstop - corrupt
+bluegui - a gui that is blue
+bombercrew - auto team chat when flares low and upon mounting vehicle. " NO FLARES LEFT - I'll cross my fingers" was a good string
+browserpics - literally some kids pack of lowres images. so random xD (not xD)
+buddypoints - autowaypoint players
+buddysearch - find servers with friends in them
+ceasefire - binding for cease fire! cannedchat
+cleandso - deletes compiled scripts
+colorhuds - lots of 3d images of various hud items instead of the iconised variant
+demofolders - some sort of demo mgmt scripting
+demonames - auto demo naming script based on server connection details
+demorefreshbutton - calls rebuildmodpaths then reloads the recording dlg
+destroyedassets - looks like a neat asset kill msg tracker with hud elements
+doublefavourites - instead of 0-9 it's 0-19 with a modifier key
+droplink - script to send <t2server:127.0.0.1:9001>name</t2server> to an irc room
+dropnonloadout - does what it says on the tin, but dio called it 'scavenge' which i like more
+DSOPoses - not sure what DSO stands for but PlayAnim with "scoutRoot" is weird and "sitting" is sitting
+FilterMsg - "SplitMsg" clone, explains the odd video where chat is split into multiple panes. kill feed, chat feed, etc...
+FilterPopUp - changes filter text to nice pop up menu? dunno
+flagcall - another autoflag script, this is where people get the kmph messages from in some demos i guess. also has a no flare missile lock msg because why not i guess?
+flaghud - this is a reticle changer based on team flag status
+flagindicators - changes textures\commander\miniicons\com_flag_grey.png
+flagradio - plays a random wav file whenever someone caps
+flagslide - some rabbit related flag hud?
+fluxvoice - pitch shifting voice hud
+fpshud - 1000ms refresh with realfps - seems to be the smol one ppl like
+freelook - seems to call hudFirstPersonToggled and $firstPerson = false; to enable 'third person and free look' which i assume is observer cam but who knows
+frostytransgui - transparent/no gui
+gameirc - irc but while you play the game, be cool to link irc back to discord
+grabspeed - another autochat grab speed thing
+grenadethrow - spams the server with grenade charges every mouse click so next grenade throw is as far as possible, should be made more efficient though...
+halide - quite a few scripts, by the looks. there's a buddy checker which runs constantly, there's binds to show various other guids, permanent deployer gui to show when deployables are ok to deploy (does it spam? idk), low ammo auto weapon switcher and gui, binding disconnect and quit to keys, start screen tab preference options
+hidechainret - hides chaingun reticle when firing (so you can look at the pretty tracers)
+hudmanager - hud resizer and repositioner. pretty useful and included in ctdynamix probably
+incoming - send a team message with a direction, bound to numpad
+ipc - some sort of player tracker?
+jsutffg - looks like a significantly more efficient max grenade throw thing
+jsutirc - jsut's T2 IRC client extentions, can't be bothered to read it
+jsutmovie - another screenshot movie script
+kerbslitepack - autoflare on missile homing, mortar and gl range reticles, joystick and freelook (zzz), deleted throw grenade from public release, deleted 'auto jump on jetpack', shows the bomber reticle for the pilot! (that seems like something that should be a default), deleted deployable indicator stuff, autofire missile upon lock, deleted flare on missile lock, toggle zoom, mousewheel zoom toggle when zooming, default zoom, default fov stuff
+killpopup - hud for showing who murdered you (pretty sure i had this)
+killshot - take a screenshot when you die lol
+scriptkit - reminders to take repair kits
+lakrabbitobjhud - some very simple looking lakrabbit hud script, dunno if it does anything
+localspammer - cycles through all of the canned chat this guy liked sending it 
+localtaunt - taunt on kill
+lockwarning - flash text and reticle upon missile lock 
+mortfov - fov switcher
+newvotehud - has more info about the vote?
+nicknotify - notify on text typed
+objectivehud - extra stuff about the current objective (seen this in a few clip compilation)
+odysseyacs - auto chat system, bunch of autochats upon various game events, like inventory station and so on
+odysseyloh - loadout hud
+diopackhud - // #description = Adds a colored ring to your reticle indicating when your pack is activated, along with options to turn the pack off when you jet, and a large text HUD for notification. Works for Shield Pack, Sensor Jammer Pack, and Cloaking Pack.
+pilotmode - // #description = Increase mouse sensitivity whilst pilot, makes it much easier to control the vehicle.
+pinghud - this one calls getScores every 4 seconds for ping stats
+pizzaclient - pizza's enhanced tournament mode mod, has weird messages like UpdatePizzaHud
+pjmoviescreen - another screenshot movie tool // #description = Create Movies from Recordings and do Screenshots
+playerwaypoint - jsut@kabob.ca right click a cc player to add a waypoint to 'em
+qadminmenu - a larger admin menu, instead of the tight one in the lobby
+rangefinder - another reticle mod for rangefinders, seems better than some (mortar, tank mortar, gl)
+reddemonanmes - another demo naming script
+repkits - auto use pack when picking up repair pack
+reticles - some reticles for most weapons, obviously some rangefinders
+sololan - another tab script that adds tutorial back in and merges lan as a filter in the online menu
+spawnweapon - autoswitch to a preferred weapon, also prevent friendly fire
+ubertarget - uhh high/low arc for mortars and so on
+teamassetfinder - automatic waypoints for team assets, neat idea. could probably extend the client list to see them all forever
+frostyteamhit - say something upon damaging a teammate
+teamsizehud - Small HUD showing team sizes.
+teamtv - cute little player cam hud, reuses the AttachCommanderCamera infrastructure though. should probably figure out how to mess with that in demo mode
+throwkit - Throws a repair kit with a key-press. (i though this was part of the final bindings already, anyway published 2002)
+tink-elf - When you use the elf gun, it will switch to the spinfusor for easy kill =]
+tink-freelook - On a held keypress, you will be switched to 3rd person in freelook, depress the binded key, and you will revert to normal.
+tmms - mp3 player, yawn
+tourneyteam - guesses which clan is which and updates the join screen, saving you a playerlist check
+tr2beacons - beacon inventory status (no idea what that means) and enhanced beacon functionality (continue to not know)
+transparent hud mods - a few
+tribehighlight - another showgoo user making another highlight script
+vecterhud - a vehicle hud mod, one of the few players to make use of the 'compiled script only' distribution method. he also sends himself an email with 'just your resolution, honest'. pretty sus.
+      """Notice: For beta testing purposes, when you first install vhud, vhud will automatically send vecter an email stating your name and what resolution you are using.  This is just to see what resolutions are mostly used."""
+vehiclefaves - Auto-Buy Vehicles
+vhs - another demo naming script, at least this one offers to auto record them, might try it
+voidsay - rebind existing voice lines with new text and bind those to a key
+votestats hud - another voting hud
+zoomcontrol - another zoom control script
+zalternatemaster - ams script
+zsupport-alware, pj, support, voicepack - various libs
+
+## T2TV
+t2tv is relatively simple in concept, but has various tweaks to make it more interesting
+the general concept is that you record 30 second clips of demos and then viewers are pushed 30 second ogg and rec files
+most of the plumbing is around 'fetching and feeding t2 a constant stream of rec files'
+i never finished looking into how the playback system worked
+
+(from the readme)
+This is done by streaming the demo file from one PC to a high bandwidth server which will then distribute the demo and audio files to all the viewers.
+
+looks like the author used timescaling to slow the game down when the next 30s hasn't finished downloading / the audio stream lags behind, pretty neat
