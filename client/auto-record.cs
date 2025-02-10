@@ -5,9 +5,12 @@
 // #warrior = looop
 // #email = loop@tribesforever.com
 // #description = Allows you to automatically record your perspective for each match you play in. Recordings are stopped on exit or debrief.
+// #warning = You should have support.vl2! Without it, your demo files will be missing useful metadata (your name, server name, time of recording) and tribesforever.com won't show it.
 
 // config
 $silenceAutoRecordHudChat = false;
+// If your demos don't record because servers have funky names (or you exceed Windows MAX_PATH), turn this off again!
+$filenameIncludesServerName = false;
 
 // internal vars
 $onlineCaptureRunning = false;
@@ -64,9 +67,14 @@ function startOnlineCapture() {
     } else {
         %gameType = "idk";
     }
-    %file = "recordings/auto-capture/"@%ts@"_"@%username@"_"@objectiveHud.gameType@"_"@$MissionName@".rec";
+    %servername = "";
+    if ($filenameIncludesServerName) {
+        %info = GMJ_Browser.getServerInfoString();
+        %servername = "_"@strlwr(getRecord( %info, 0));
+    }
+    %file = "recordings/auto-capture/"@%ts@"_"@%username@%serverInfo@"_"@objectiveHud.gameType@"_"@$MissionName@".rec";
     if (!$silenceAutoRecordHudChat) {
-        addMessageHudLine( "\c4Recording to file [\c2" @ %file @ "\cr] (auto-capture).");
+        addMessageHudLine( "\c4Recording to file [\c2" @ %file @ "\cr] (auto-record).");
     }
 
     saveDemoSettings();
