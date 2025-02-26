@@ -8,13 +8,19 @@
 // #warning = You should have support.vl2! Without it, your demo files will be missing useful metadata (your name, server name, time of recording) and tribesforever.com won't show it.
 
 // config
+$minimumRecordingLengthSecs = 60; // set to zero for no-minimum-length
+$minimumRecordingPlayerCount = 3; // set to zero for no-minimum-players
 $silenceAutoRecordHudChat = false;
 // If your demos don't record because servers have funky names (or you exceed Windows MAX_PATH), turn this off again!
 $filenameIncludesServerName = false;
 
-// internal vars
+
+// internal vars, don't change 'em
 $onlineCaptureRunning = false;
 $shouldCaptureNextPlayWake = false;
+$recordingPlayerCountOkay = false;
+$recordingStartTime = 0;
+$lastRecordingFilename = "";
 
 package OnlineDemoCaptureShim {
     function DebriefGui::onWake( %this ) {
@@ -39,13 +45,59 @@ package OnlineDemoCaptureShim {
         }
         $onlineCaptureRunning = false;
         parent::demoRecordComplete();
+        // Check if this demo should be allowed to persist
+        if ($minimumRecordingLengthSecs != 0 && $recordingStartTime != 0) {
+            %totalRecordingTime = getRealTime() - $recordingStartTime;
+            if (%totalRecordingTime / 1000 < $minimumRecordingLengthSecs) {
+                deleteLastRecording("too short");
+            }
+            $recordingStartTime = 0;
+        }
+        if ($minimumRecordingPlayerCount != 0) {
+            cancel($checkAutoRecPlayerCountTimer);
+            if ($recordingPlayerCountOkay == false) {
+                deleteLastRecording("not enough players, need " @ $minimumRecordingPlayerCount);
+            }
+        }
     }
 };
 activatePackage(OnlineDemoCaptureShim);
 
+function deleteLastRecording(%why) {
+    addMessageHudLine("\c4Deleting last auto-capture file (" @ %why @ ")");
+    echo("Delete last auto-capture: " @ %why);
+    deleteFile($lastRecordingFilename);
+}
+
 function delayedStartOnlineCapture() {
     cancel($startOnlineCaptureTimer);
     $startOnlineCaptureTimer = schedule(2000, 0, "startOnlineCapture");
+}
+
+function checkAutoRecordPlayerCount() {
+    if (!isObject(PlayerListGroup)) {
+        // probably left the server
+        return;
+    }
+    %playerCount = PlayerListGroup.getCount();
+    %botCount = 0;
+    %observerCount = 0;
+    for (%i = 0; %i < %playerCount; %i++) {
+        %player = PlayerListGroup.getObject(%i);
+        if (%player.isBot) {
+            %botCount += 1;
+        }
+        //if (%player.teamId == 0) {
+        //   %observerCount += 1; // turned out to be unreliable for DM modes? i don't really remember
+        //}
+    }
+    %playerCount = %playerCount - %botCount;
+    if (%playerCount >= $minimumRecordingPlayerCount) {
+        $recordingPlayerCountOkay = true;
+    } else {
+        cancel($checkAutoRecPlayerCountTimer);
+        $checkAutoRecPlayerCountTimer = schedule(1000, 0, "checkAutoRecordPlayerCount");
+    }
 }
 
 function startOnlineCapture() {
@@ -79,7 +131,13 @@ function startOnlineCapture() {
 
     saveDemoSettings();
     startRecord(%file);
+    $lastRecordingFilename = %file;
     $onlineCaptureRunning = true;
+    $recordingStartTime = getRealTime();
+    $recordingPlayerCountOkay = false;
+    if ($minimumRecordingPlayerCount != 0) {
+        schedule(1000, 0, "checkAutoRecordPlayerCount");
+    }
 }
 
 function stopOnlineCapture() {
