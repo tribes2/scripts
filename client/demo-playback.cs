@@ -14,6 +14,6 @@ package BiteMyShinyMetalAss {
         }
 		parent::setContent(%this,%canvas);
 	}
-}
+};
 
 activatePackage(BiteMyShinyMetalAss);
