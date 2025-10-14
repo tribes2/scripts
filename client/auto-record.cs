@@ -1,6 +1,6 @@
 // #autoload
 // #name = auto-record
-// #date = January 27th, 2025
+// #date = January 27th & October 14th, 2025
 // #author = loop
 // #warrior = looop
 // #email = loop@tribesforever.com
@@ -147,7 +147,7 @@ function stopOnlineCapture() {
 
 function delayedStopOnlineCapture() {
    cancel($stopOnlineCaptureTimer);
-   $stopOnlineCaptureTimer = schedule(2000, 0, "stopOnlineCapture");
+   $stopOnlineCaptureTimer = schedule(1000, 0, "stopOnlineCapture");
 }
 
 function handleOnlineDebrief() {
