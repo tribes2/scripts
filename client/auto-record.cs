@@ -4,6 +4,7 @@
 // #author = loop
 // #warrior = looop
 // #email = loop@tribesforever.com
+// #url = https://github.com/tribes2/scripts/
 // #description = Allows you to automatically record your perspective for each match you play in. Recordings are stopped on exit or debrief.
 // #warning = You should have support.vl2! Without it, your demo files will be missing useful metadata (your name, server name, time of recording) and tribesforever.com won't show it.
 
