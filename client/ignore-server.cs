@@ -6,6 +6,9 @@
 // #email = loop@tribesforever.com
 // #description = Prevent Tribes 2 from querying a server based on a partial IP match. Compatible with RC2a and QoL
 
+if (isObject($ignoredServer) || $ignoredServer !$= "0.0.0.0") {
+    return;
+}
 $ignoredServer = "0.0.0.0"; // Replace me
 
 package ServerQueryIgnore {
